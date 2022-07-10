@@ -1,0 +1,44 @@
+1.按顺序打印出App、ViewController生命周期的各个事件
+  App: 点击程序图标->执行main函数->通过UIApplicationMain函数->初始化UIApplication对象并且为它设置代理对象
+    ->初始化后的UIApplication对象在程序结束之前监听系统事件->程序结束退出
+
+  ViewController: alloc/init->loadView->viewDidLoad->viewWillAppear->
+    viewDidAppear->viewWillDisappear->viewDidDisappear->dealloc
+
+
+2.写出五种常用的UI控件
+  UIViewController
+  UIView
+  UIScrollerView
+  UITableView
+  UIWebView
+
+3.列举出三个UITableViewDelegate声明的方法
+/**
+*  选中某一行的时候调用(点击某一行)
+*
+*  @param indexPath 被选中的那一行
+*/
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSLog(@"selectRowAtIndexPath - %zd", indexPath.row);
+}
+
+/**
+*  取消选中某一行的时候调用
+*
+*  @param indexPath 被取消选中的那一行
+*/
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  NSLog(@"deselectRowAtIndexPath - %zd", indexPath.row);
+}
+
+/**
+*  告诉tableView第section显示怎样的头部控件
+*
+*/
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+  return [UIButton buttonWithType:UIButtonTypeContactAdd];
+}
